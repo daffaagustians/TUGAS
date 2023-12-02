@@ -16,11 +16,22 @@ public class Penjualan implements Transaksi {
         return barang.getHargaBarang() * jumlahBarang;
     }
 
+
+    
+
     public String getInfoTransaksi() {
+        String totalBayar = new String("\nTotal Bayar :");//contoh method string uppercase
+        
         return "No Faktur: " + noFaktur +
-                "\nPelanggan: " + pelanggan.getNamaPelanggan() +
-                "\nBarang: " + barang.getNamaBarang() +
-                "\nJumlah: " + jumlahBarang +
-                "\nTotal Bayar: " + hitungTotalBayar();
+                "\nNama Pelanggan: " + pelanggan.getNamaPelanggan() +
+                "\nNomor HP: " + pelanggan.getNomorHP() +
+                "\nAlamat: " + pelanggan.getAlamat() +
+                "\nNama Barang: " + barang.getNamaBarang() +
+                "\nHarga Barang: " + barang.getHargaBarang() +
+                "\nNama Kasir: " + barang.getKasir() +
+                "\nJumlah Beli: " + jumlahBarang +
+                totalBayar.toUpperCase() + hitungTotalBayar();
+                
+                
     }
 }

@@ -1,8 +1,17 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Minimarket {
     public static void main(String[] args) {
+         // Mendapatkan tanggal dan waktu sekarang
+         LocalDateTime currentDateTime = LocalDateTime.now();
+
+         // Memisahkan tanggal dan waktu
+         String date = currentDateTime.toLocalDate().toString();
+         String time = currentDateTime.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
         Scanner scanner = new Scanner(System.in);
           // Input dari pengguna
         System.out.print("Masukkan nomor faktur: ");
@@ -11,11 +20,22 @@ public class Minimarket {
         System.out.print("Masukkan nama pelanggan: ");
         String namaPelanggan = scanner.nextLine();
 
+        System.out.print("Masukkan nomor HP pelanggan: ");
+        String nomorHP = scanner.nextLine();
+
+        System.out.print("Masukkan alamat pelanggan: ");
+        String alamat = scanner.nextLine();
+
         System.out.print("Masukkan nama barang: ");
         String namaBarang = scanner.nextLine();
 
+        System.out.print("Masukkan nama kasir: ");
+        String Kasir = scanner.nextLine();
+
         System.out.print("Masukkan harga barang: ");
         double hargaBarang = scanner.nextDouble();
+
+        
 
         // Input dari pengguna
         // (kode input sebelumnya)
@@ -40,14 +60,15 @@ public class Minimarket {
             }
         }
 
-        // Membuat objek dan menampilkan informasi transaksi
-        // (kode selanjutnya sama seperti sebelumnya)
-           // Membuat objek dan menampilkan informasi transaksi
-        Barang barang = new Barang(namaBarang, hargaBarang);
-        Pelanggan pelanggan = new Pelanggan(namaPelanggan);
+        Barang barang = new Barang(namaBarang, hargaBarang, Kasir);
+        Pelanggan pelanggan = new Pelanggan(namaPelanggan,nomorHP, alamat);
         Penjualan penjualan = new Penjualan(noFaktur, pelanggan, barang, jumlahBarang);
 
-        System.out.println("\nDetail Transaksi:");
+        System.out.println("\nACIAK MART LUBUK BUAYA");
+        System.out.println("Tanggal: " + date);
+        System.out.println("Waktu: " + time);
+        System.out.println("========================");
+        System.out.println("Data Pembelian Pelanggan");
         System.out.println(penjualan.getInfoTransaksi());
 
         scanner.close();
